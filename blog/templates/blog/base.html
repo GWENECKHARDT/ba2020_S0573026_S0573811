@@ -6,21 +6,25 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    </head>
-        <body>
-        <div class="page-header">
-            <h1><a href="/">ToDo-Liste</a></h1>
-            <a href="{% url 'todo_new' %}"type="button">New ToDo</a>
-            <a href="{% url 'todo_new' %}"><button type="button">New ToDo</button></a>
-            @Vivi: Was gefällt dir da besser? Button oder Link?
-        </div>
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                {% block content %}
-                {% endblock %}
+   <body>
+            <div class="page-header">
+                {% if user.is_authenticated %}
+                     <a href="{% url 'todo_new' %}"><button type="button">New ToDo</button></a>
+                     <a href="{% url 'todo_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
+                    <p class="top-menu">Hello {{ user.username }} <button type="button"><a href="{% url 'logout' %}">Log out</a></button></p>
+                {% else %}
+                     <a href="{% url 'login' %}" ><button type="button">Login</button></a>
+                {% endif %}
+                <h1><a href="/">ToDo-Liste</a></h1>
+            </div>
+            <div class="content container">
+                <div class="row">
+                    <div class="col-md-8">
+                    {% block content %}
+                    {% endblock %}
+                    </div>
                 </div>
             </div>
-        </div>
-    </body>
+        </body>
+
 </html>
