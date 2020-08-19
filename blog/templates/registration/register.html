@@ -1,0 +1,13 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+
+    <form method="POST">
+        {% csrf_token %}
+        {{form}}
+         <button style="background-color:lawngreen; color:black" class="btn btn-outline-info" type="submit">Registrieren</button>
+    </form>
+
+    Wenn du schon einen Account hast, geht es hier zur <a href='login' target="blank"><strong>Anmeldung</strong></a> .
+
+{% endblock %}
