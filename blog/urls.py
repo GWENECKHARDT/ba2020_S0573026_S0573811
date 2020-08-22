@@ -8,6 +8,7 @@ urlpatterns = [
     path('todo/<int:pk>/edit/', views.todo_edit, name='todo_edit'),
     path('accounts/register', views.register, name='register'),
     path('todo/<pk>/remove/', views.todo_remove, name='todo_remove'),
+    path('tododetails', views.tododetails, name='tododetails'),
 
 ]
 

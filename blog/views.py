@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
 
-
 @login_required
 def todo_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
@@ -20,6 +19,7 @@ def todo_list(request):
 def todo_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/todo_detail.html', {'post': post})
+
 
 def todo_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -57,6 +57,7 @@ def todo_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/todo_edit.html', {'form': form})
 
+
 def register(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
@@ -78,3 +79,9 @@ def register(request):
     return render(request = request,
                   template_name = "registration/register.html",
                   context={"form":form})
+
+
+@login_required
+def tododetails(request):
+    form = PostForm()
+    return render(request, 'blog/tododetails.html', {'form':form})
