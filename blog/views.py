@@ -21,6 +21,11 @@ def todo_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/todo_detail.html', {'post': post})
 
+def todo_remove(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    return redirect('todo_list')
+
 
 @login_required
 def todo_new(request):
