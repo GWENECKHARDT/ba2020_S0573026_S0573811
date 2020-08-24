@@ -3,7 +3,7 @@ from django.contrib.auth import login
 from django.utils import timezone
 from .models import Post
 from django.shortcuts import render, get_object_or_404
-from .forms import PostForm
+from .forms import PostForm, ToDoForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -56,6 +56,33 @@ def todo_edit(request, pk):
     else:
         form = PostForm(instance=post)
     return render(request, 'blog/todo_edit.html', {'form': form})
+
+def todonew(request):
+    if request.method == "POST":
+        form = ToDoForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('tododetails', pk=post.pk)
+    else:
+        form = PostForm()
+    return render(request, 'blog/todoedit.html', {'form': form})
+
+def todoedit(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = ToDoForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('tododetails', pk=post.pk)
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'blog/todoedit.html', {'form': form})
 
 
 def register(request):

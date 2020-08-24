@@ -9,6 +9,8 @@ urlpatterns = [
     path('accounts/register', views.register, name='register'),
     path('todo/<pk>/remove/', views.todo_remove, name='todo_remove'),
     path('tododetails', views.tododetails, name='tododetails'),
+    path('todo/<int:pk>/todoedit/', views.todoedit, name='todoedit'),
+    path('todo/todonew/', views.todonew, name='todonew'),
 
 ]
 
