@@ -4,15 +4,17 @@
         <title>To-Do Liste</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/todoliste.css' %}">
+<!--        <link href="//fonts.google.com/specimen/Pacifico?query=paci" rel="stylesheet" type="text/css"-->
+<!--        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">-->
     </head>
    <body>
             <div class="page-header">
-                {% if user.is_authenticated %}
-                     <a href="{% url 'todo_new' %}"><button type="button">Neue To-Do Liste</button></a>
-
-                    <p class="top-menu">Hallo {{ user.username }} <button type="button"><a href="{% url 'logout' %}">Abmelden</a></button></p>
-                {% endif %}
                 <h1><a href="/">To-Do Liste</a></h1>
+                {% if user.is_authenticated %}
+                     <h4><p class="top-menu">Hallo {{ user.username }} <button type="button"><a href="{% url 'logout' %}">Abmelden</a></button></p></h4>
+                     <h4><a href="{% url 'todo_new' %}"><button type="button">Neue To-Do Liste</button></a></h4>
+                {% endif %}
             </div>
             <div class="content container">
                 <div class="row">

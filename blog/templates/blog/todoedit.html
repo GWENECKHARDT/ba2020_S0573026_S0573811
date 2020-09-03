@@ -4,6 +4,6 @@
     <h2>Neues ToDo erstellen</h2>
     <form method="POST" class="todo-form">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Bestätigen</button>
+        <h3><button type="submit" class="save btn btn-default">Bestätigen</button></h3>
     </form>
 {% endblock %}

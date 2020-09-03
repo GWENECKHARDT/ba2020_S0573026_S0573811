@@ -1,14 +1,15 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block content %}
     {% for post in posts %}
         <div class="post">
-            <div class="date">
-                <h5><a href="">veröffentlicht: {{ post.published_date }}</a></h5>
-            </div>
             <h2><a href="{% url 'todo_detail' pk=post.pk %}">{{ post.title }}</a></h2>
-            <a href="{% url 'tododetails' %}" class="btn btn-danger">To-Do's</a>
-            <p>{{ post.author}}</p>
+            <h4><a href="{% url 'tododetails' %}"><button type="button">To-Do's</button></a></h4>
+            <h4><p>Von: {{ post.author}}</p></h4>
+            <div class="date">
+                <h5>Veröffentlicht: {{ post.published_date }}</h5>
+            </div>
         </div>
     {% endfor %}
 {% endblock %}

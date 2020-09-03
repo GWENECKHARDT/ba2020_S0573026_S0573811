@@ -1,17 +1,18 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 
 {% block content %}
     <div class="post">
         {% if post.published_date %}
-            <div class="date">
-                {{ post.published_date }}
-            </div>
         {% endif %}
         {% if user.is_authenticated %}
-            <a class="btn btn-default" href="{% url 'todo_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-            <a class="btn btn-default" href="{% url 'todo_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+            <h4><a class="btn btn-default" href="{% url 'todo_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-default" href="{% url 'todo_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a></h4>
         {% endif %}
         <h2>{{ post.title }}</h2>
-        <p>{{ post.author}}</p>
+        <h4><p>Von: {{ post.author}}</p></h4>
+        <div class="date">
+                <h5>Veröffentlicht: {{ post.published_date }}</h5>
+        </div>
     </div>
 {% endblock %}
