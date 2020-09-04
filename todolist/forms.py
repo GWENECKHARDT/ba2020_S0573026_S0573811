@@ -1,6 +1,7 @@
 from django import forms
 
-from .models import Post
+from .models import Post, ToDo
+
 
 class PostForm(forms.ModelForm):
 
@@ -11,5 +12,5 @@ class PostForm(forms.ModelForm):
 class ToDoForm(forms.ModelForm):
 
     class Meta:
-        model = Post
+        model = ToDo
         fields = ('title', 'text', 'author',)

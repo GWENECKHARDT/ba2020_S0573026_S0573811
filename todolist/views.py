@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import login
 from django.utils import timezone
-from .models import Post
+from .models import Post, ToDo
 from django.shortcuts import render, get_object_or_404
 from .forms import PostForm, ToDoForm
 from django.shortcuts import redirect
@@ -18,6 +18,7 @@ def list_list(request):
 @login_required
 def list_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
+    # todos = ToDo.objects.filter(created_date__lte=timezone.now()).order_by('created_date')
     return render(request, 'todolist/list_detail.html', {'post': post})
 
 
@@ -58,30 +59,30 @@ def list_edit(request, pk):
     return render(request, 'todolist/list_edit.html', {'form': form})
 
 def todo_new(request):
-    if request.method == "POST":
-        form = ToDoForm(request.POST)
+    if request.method == "TODO":
+        form = ToDoForm(request.TODO)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-            return redirect('todo_details', pk=post.pk)
+            todo = form.save(commit=False)
+            todo.author = request.user
+            todo.published_date = timezone.now()
+            todo.save()
+            return redirect('todo_details', pk=todo.pk)
     else:
-        form = PostForm()
-    return render(request, 'todolist//todo/todo_edit.html', {'form': form})
+        form = ToDoForm()
+    return render(request, 'todolist/todo/todo_edit.html', {'form': form})
 
 def todo_edit(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    if request.method == "POST":
-        form = ToDoForm(request.POST, instance=post)
+    todo = get_object_or_404(ToDo, pk=pk)
+    if request.method == "TODO":
+        form = ToDoForm(request.TODO, instance=todo)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.published_date = timezone.now()
-            post.save()
-            return redirect('todo_details', pk=post.pk)
+            todo = form.save(commit=False)
+            todo.author = request.user
+            todo.published_date = timezone.now()
+            todo.save()
+            return redirect('todo_details', pk=todo.pk)
     else:
-        form = PostForm(instance=post)
+        form = ToDoForm(instance=todo)
     return render(request, 'todolist/todo/todo_edit.html', {'form': form})
 
 
@@ -110,10 +111,23 @@ def register(request):
 
 @login_required
 def todo_details(request):
-    form = PostForm()
+    form = ToDoForm()
     return render(request, 'todolist/todo/todo_details.html', {'form':form})
 
 @login_required
 def todo_list(request):
-    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'todolist/todo/todo_list.html', {'posts': posts})
+    todos = ToDo.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'todolist/todo/todo_list.html', {'todos': todos})
+
+def add_todo_to_list(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = ToDoForm(request.POST)
+        if form.is_valid():
+            todo = form.save(commit=False)
+            todo.post = post
+            todo.save()
+            return redirect('list_detail', pk=post.pk)
+    else:
+        form = ToDoForm()
+    return render(request, 'todolist/add_todo_to_list.html', {'form': form})

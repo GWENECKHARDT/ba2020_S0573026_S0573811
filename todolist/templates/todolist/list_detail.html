@@ -15,4 +15,16 @@
                 <h5>Veröffentlicht: {{ post.published_date }}</h5>
         </div>
     </div>
+<!--Ab hier für die ToDos:-->
+    <hr>
+    <a class="btn btn-default" href="{% url 'add_todo_to_list' pk=post.pk %}">Add ToDo</a>
+    {% for todo in post.todos.all %}
+        <div class="todo">
+            <div class="date">{{ todo.created_date }}</div>
+            <strong>{{ todo.author }}</strong>
+            <p>{{ todo.text|linebreaks }}</p>
+        </div>
+    {% empty %}
+        <p>Noch keine ToDos vorhanden.</p>
+    {% endfor %}
 {% endblock %}
