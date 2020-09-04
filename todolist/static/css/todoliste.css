@@ -3,6 +3,7 @@
 /*font.size: Größe*/
 /*visited: zeigt an, was schon besucht wurde*/
 /*activate: zeigt an, was gerade besucht wird*/
+/*Schrift vorher: Pacifico, cursive*/
 
 .page-header
 {
@@ -14,14 +15,14 @@
 .page-header h1 a
 {
     color: white;
-    font-family: 'Pacifico', cursive, fed;
+    font-family: 'Poppins', fed;
     font-size: 30pt
 }
 
 .page-header h4
 {
     color: white;
-    font-family: 'Pacifico', cursive;
+    font-family: 'Poppins';
 }
 
 .top-menu
@@ -32,36 +33,36 @@
 
 h2
 {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Poppins';
     color: black;
 }
 
 h2 a
 {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Poppins';
     color: black;
 }
 
 h3
 {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Poppins';
     color: darkviolet;
 }
 
 h4
 {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Poppins';
     color: black;
 }
 
 h4 a
 {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Poppins';
     color: darkviolet;
 }
 
 h5
 {
-    font-family: 'Pacifico', cursive;
+    font-family: 'Poppins';
     color: grey;
 }

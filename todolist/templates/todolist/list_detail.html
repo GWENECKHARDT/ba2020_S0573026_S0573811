@@ -1,4 +1,4 @@
-{% extends 'blog/base.html' %}
+{% extends 'todolist/base.html' %}
 {% load static %}
 
 {% block content %}
@@ -6,8 +6,8 @@
         {% if post.published_date %}
         {% endif %}
         {% if user.is_authenticated %}
-            <h4><a class="btn btn-default" href="{% url 'todo_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-            <a class="btn btn-default" href="{% url 'todo_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a></h4>
+            <h4><a class="btn btn-default" href="{% url 'list_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-default" href="{% url 'list_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a></h4>
         {% endif %}
         <h2>{{ post.title }}</h2>
         <h4><p>Von: {{ post.author}}</p></h4>

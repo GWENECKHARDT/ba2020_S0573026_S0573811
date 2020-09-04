@@ -1,4 +1,4 @@
-{% extends 'blog/base.html' %}
+{% extends 'todolist/base.html' %}
 {% load static %}
 <html>
     <head>
@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-md-8">
                     {% block content %}
-                         <h4><a href="{% url 'todonew' %}"><button type="button">Neues To-Do erstellen</button></a></h4>
+                         <h4><a href="{% url 'todo_new' %}"><button type="button">Neues To-Do erstellen</button></a></h4>
                     {% endblock %}
                     </div>
                 </div>

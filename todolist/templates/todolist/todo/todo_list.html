@@ -1,0 +1,15 @@
+{% extends 'todolist/base.html' %}
+{% load static %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <h2><a href="{% url 'list_detail' pk=post.pk %}">{{ post.title }}</a></h2>
+            <h4><a href="{% url 'todo_details' %}"><button type="button">To-Do's</button></a></h4>
+            <h4><p>Von: {{ post.author}}</p></h4>
+            <div class="date">
+                <h5>Veröffentlicht: {{ post.published_date }}</h5>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

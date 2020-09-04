@@ -13,7 +13,7 @@
                 <h1><a href="/">To-Do Liste</a></h1>
                 {% if user.is_authenticated %}
                      <h4><p class="top-menu">Hallo {{ user.username }} <button type="button"><a href="{% url 'logout' %}">Abmelden</a></button></p></h4>
-                     <h4><a href="{% url 'todo_new' %}"><button type="button">Neue To-Do Liste</button></a></h4>
+                     <h4><a href="{% url 'list_new' %}"><button type="button">Neue To-Do Liste</button></a></h4>
                 {% endif %}
             </div>
             <div class="content container">
