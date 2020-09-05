@@ -20,7 +20,12 @@
     <a class="btn btn-default" href="{% url 'add_todo_to_list' pk=post.pk %}">Add ToDo</a>
     {% for todo in post.todos.all %}
         <div class="todo">
-            <div class="date">{{ todo.created_date }}</div>
+            <div class="date">
+            {{ todo.created_date }}
+            {% if not comment.approved_comment %}
+                <a class="btn btn-default" href="{% url 'todo_remove' pk=todo.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                <a class="btn btn-default" href="{% url 'todo_approve' pk=todo.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+            {% endif %}
             <strong>{{ todo.author }}</strong>
             <p>{{ todo.text|linebreaks }}</p>
         </div>
