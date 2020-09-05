@@ -7,7 +7,7 @@
             <h2><a href="{% url 'list_detail' pk=post.pk %}">{{ post.title }}</a></h2>
             <p>{{ post.text|linebreaksbr }}</p>
             <h4><a href="{% url 'list_detail' pk=post.pk %}">ToDos: {{ post.todos.count }}</a></h4>
-            <h4><a href="{% url 'list_detail' pk=post.pk %}">Approved ToDos: {{ post.approved_todos.count }}</a></h4>
+            <h4><a href="{% url 'list_detail' pk=post.pk %}">Davon erledigte ToDos: {{ post.approved_todos.count }}</a></h4>
 <!--            <h4><a href="{% url 'todo_details' %}"><button type="button">To-Do's</button></a></h4>-->
             <h4><p>Von: {{ post.author}}</p></h4>
             <div class="date">
