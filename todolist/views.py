@@ -132,6 +132,7 @@ def add_todo_to_list(request, pk):
         form = ToDoForm()
     return render(request, 'todolist/add_todo_to_list.html', {'form': form})
 
+
 @login_required
 def todo_approve(request, pk):
     todo = get_object_or_404(ToDo, pk=pk)
@@ -143,3 +144,7 @@ def todo_remove(request, pk):
     todo = get_object_or_404(ToDo, pk=pk)
     todo.delete()
     return redirect('list_detail', pk=todo.post.pk)
+
+
+def agbs(request):
+    return render(request, 'agbs/agb.html', {})

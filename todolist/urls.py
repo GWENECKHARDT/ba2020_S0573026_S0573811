@@ -7,6 +7,7 @@ urlpatterns = [
     path('list/new/', views.list_new, name='list_new'),
     path('list/<int:pk>/edit/', views.list_edit, name='list_edit'),
     path('accounts/register', views.register, name='register'),
+    path('agbs', views.agbs, name='agbs'),
     path('list/<pk>/remove/', views.list_remove, name='list_remove'),
     path('todo/tododetails', views.todo_details, name='todo_details'),
     path('todo/<int:pk>/todoedit/', views.todo_edit, name='todo_edit'),
@@ -14,5 +15,6 @@ urlpatterns = [
     path('todo/<int:pk>/todos/', views.add_todo_to_list, name='add_todo_to_list'),
     path('todo/<int:pk>/approve/', views.todo_approve, name='todo_approve'),
     path('todo/<int:pk>/remove/', views.todo_remove, name='todo_remove'),
+
 ]
 

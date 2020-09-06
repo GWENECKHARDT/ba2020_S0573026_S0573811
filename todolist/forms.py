@@ -13,4 +13,4 @@ class ToDoForm(forms.ModelForm):
 
     class Meta:
         model = ToDo
-        fields = ('title', 'text', 'author',)
+        fields = ('text', 'author',)
