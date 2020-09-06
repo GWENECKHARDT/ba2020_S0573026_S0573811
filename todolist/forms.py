@@ -7,7 +7,7 @@ class PostForm(forms.ModelForm):
 
     class Meta:
          model = Post
-         fields = ('title', 'author',)
+         fields = ('title', 'author', 'to',)
 
 class ToDoForm(forms.ModelForm):
 
