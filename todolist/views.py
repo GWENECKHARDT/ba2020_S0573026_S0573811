@@ -146,5 +146,5 @@ def todo_remove(request, pk):
     return redirect('list_detail', pk=todo.post.pk)
 
 
-def agbs(request):
-    return render(request, 'agbs/agb.html', {})
+def anbs(request):
+    return render(request, 'anbs/anb.html', {})
