@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+    <h5>Benötigst du <a class="btn btn-link" href="{% url 'hilfe' %}" target="blank"><strong>Hilfe</strong></a>?</h5>
     {% for post in posts %}
         <div class="post">
             <h2><a href="{% url 'list_detail' pk=post.pk %}">{{ post.title }}</a></h2>

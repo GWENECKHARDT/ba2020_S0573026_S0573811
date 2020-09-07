@@ -152,3 +152,6 @@ def todo_closed(request, pk):
 
 def anbs(request):
     return render(request, 'anbs/anb.html', {})
+
+def hilfe(request):
+    return render(request, 'hilfe/hilfe.html', {})

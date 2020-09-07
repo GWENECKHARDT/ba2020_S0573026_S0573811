@@ -10,7 +10,6 @@
     background-color: darkviolet;
     margin-top: 0;
     padding: 10px 10px 10px 20px;
-    font-family: 'Poppins', bold;
 }
 
 .page-header h1 a
@@ -31,6 +30,12 @@
     color: white;
     float: right;
     font-family: 'Poppins';
+}
+
+.top-menu h5 p
+{
+    color: white;
+    float: left;
 }
 
 .btn-custom
