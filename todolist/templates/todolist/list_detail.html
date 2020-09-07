@@ -16,20 +16,24 @@
     </div>
 <!--Ab hier für die ToDos:-->
     <hr>
-    <a class="btn btn-custom" href="{% url 'add_todo_to_list' pk=post.pk %}">Add ToDo</a>
+    <a class="btn btn-custom" href="{% url 'add_todo_to_list' pk=post.pk %}">To-Do hinzufügen</a>
     {% for todo in post.todos.all %}
         <div class="todo">
             <div class="date">
-                <p><h5>{{ todo.created_date }}<h5/></p>
+                <p><h5>{{ todo.created_date }}</h5></p>
             <p><h4>{{ todo.text|linebreaks }}</h4></p>
+                {% if not todo.approved_todo %}
             <p><h4>Schon erledigt <strong>{{ post.to }}</strong>?</h4></p>
-            {% if not todo.approved_todo %}
+                {% endif %}
+                <a class="btn btn-warning" href="{% url 'todo_edit' pk=todo.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
                 <a class="btn btn-danger" href="{% url 'todo_remove' pk=todo.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-            {% endif %}
+            {% if not todo.approved_todo %}
                 <a class="btn btn-success" href="{% url 'todo_approve' pk=todo.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+            {% endif %}
 
+            </div>
         </div>
     {% empty %}
-        <p>Noch keine ToDos vorhanden.</p>
+        <p>Noch kein To-Do vorhanden.</p>
     {% endfor %}
 {% endblock %}

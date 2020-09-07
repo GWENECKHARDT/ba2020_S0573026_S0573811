@@ -1,6 +1,6 @@
 {% extends 'todolist/base.html' %}
 {% block content %}
-    <h1>Neues ToDo</h1>
+    <h1>Neues To-Do</h1>
     <form method="POST" class="post-form">{% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-custom">Bestätigen</button>

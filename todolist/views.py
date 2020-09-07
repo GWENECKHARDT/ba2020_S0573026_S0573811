@@ -18,7 +18,6 @@ def list_list(request):
 @login_required
 def list_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    # todos = ToDo.objects.filter(created_date__lte=timezone.now()).order_by('created_date')
     return render(request, 'todolist/list_detail.html', {'post': post})
 
 
@@ -58,33 +57,6 @@ def list_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'todolist/list_edit.html', {'form': form})
 
-def todo_new(request):
-    if request.method == "TODO":
-        form = ToDoForm(request.TODO)
-        if form.is_valid():
-            todo = form.save(commit=False)
-            todo.author = request.user
-            todo.published_date = timezone.now()
-            todo.save()
-            return redirect('todo_details', pk=todo.pk)
-    else:
-        form = ToDoForm()
-    return render(request, 'todolist/todo/todo_edit.html', {'form': form})
-
-def todo_edit(request, pk):
-    todo = get_object_or_404(ToDo, pk=pk)
-    if request.method == "TODO":
-        form = ToDoForm(request.TODO, instance=todo)
-        if form.is_valid():
-            todo = form.save(commit=False)
-            todo.author = request.user
-            todo.published_date = timezone.now()
-            todo.save()
-            return redirect('todo_details', pk=todo.pk)
-    else:
-        form = ToDoForm(instance=todo)
-    return render(request, 'todolist/todo/todo_edit.html', {'form': form})
-
 
 def register(request):
     if request.method == "POST":
@@ -109,15 +81,46 @@ def register(request):
                   context={"form":form})
 
 
+def todo_new(request):
+    if request.method == "TODO":
+        form = ToDoForm(request.TODO)
+        if form.is_valid():
+            todo = form.save(commit=False)
+            todo.author = request.user
+            todo.published_date = timezone.now()
+            todo.save()
+            return redirect('todo_details', pk=todo.pk)
+    else:
+        form = ToDoForm()
+    return render(request, 'todolist/todo/todo_edit.html', {'form': form})
+
+
+def todo_edit(request, pk):
+    todo = get_object_or_404(ToDo, pk=pk)
+    if request.method == "TODO":
+        form = ToDoForm(request.TODO, instance=todo)
+        if form.is_valid():
+            todo = form.save(commit=False)
+            todo.author = request.user
+            todo.published_date = timezone.now()
+            todo.save()
+            return redirect('todo_details', pk=todo.pk)
+    else:
+        form = ToDoForm(instance=todo)
+    return render(request, 'todolist/todo/todo_edit.html', {'form': form})
+
+
 @login_required
 def todo_details(request):
     form = ToDoForm()
     return render(request, 'todolist/todo/todo_details.html', {'form':form})
 
+
 @login_required
 def todo_list(request):
     todos = ToDo.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'todolist/todo/todo_list.html', {'todos': todos})
+
 
 def add_todo_to_list(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -139,11 +142,13 @@ def todo_approve(request, pk):
     todo.approve()
     return redirect('list_detail', pk=todo.post.pk)
 
+
 @login_required
 def todo_remove(request, pk):
     todo = get_object_or_404(ToDo, pk=pk)
     todo.delete()
     return redirect('list_detail', pk=todo.post.pk)
+
 
 def todo_closed(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -152,6 +157,7 @@ def todo_closed(request, pk):
 
 def anbs(request):
     return render(request, 'anbs/anb.html', {})
+
 
 def hilfe(request):
     return render(request, 'hilfe/hilfe.html', {})

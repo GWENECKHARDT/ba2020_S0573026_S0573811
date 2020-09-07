@@ -9,6 +9,7 @@ class PostForm(forms.ModelForm):
          model = Post
          fields = ('title', 'author', 'to',)
 
+
 class ToDoForm(forms.ModelForm):
 
     class Meta:
