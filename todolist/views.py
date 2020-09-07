@@ -145,6 +145,10 @@ def todo_remove(request, pk):
     todo.delete()
     return redirect('list_detail', pk=todo.post.pk)
 
+def todo_closed(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'todolist/todo/todo_closed.html', {'post': post})
+
 
 def anbs(request):
     return render(request, 'anbs/anb.html', {})

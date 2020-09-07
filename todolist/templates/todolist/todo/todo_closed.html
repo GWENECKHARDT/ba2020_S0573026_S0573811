@@ -1,0 +1,19 @@
+{% extends 'todolist/base.html' %}
+{% load static %}
+
+{% block content %}
+    <hr>
+    {% for todo in post.todos.all %}
+        {% if todo.approved_todo %}
+        <div class="todo">
+            <div class="date">
+                <p><h5>{{ todo.created_date }}<h5/></p>
+            <p><h4>{{ todo.text|linebreaks }}</h4></p>
+            <p><h4>Erledigt!</h4></p>
+            <a class="btn btn-danger" href="{% url 'todo_remove' pk=todo.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+            {% endif %}
+        </div>
+    {% empty %}
+        <p>Noch keine ToDos erledigt.</p>
+    {% endfor %}
+{% endblock %}

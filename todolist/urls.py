@@ -15,6 +15,7 @@ urlpatterns = [
     path('todo/<int:pk>/todos/', views.add_todo_to_list, name='add_todo_to_list'),
     path('todo/<int:pk>/approve/', views.todo_approve, name='todo_approve'),
     path('todo/<int:pk>/remove/', views.todo_remove, name='todo_remove'),
+    path('todo/<int:pk>/closed', views.todo_closed, name='todo_closed'),
 
 ]
 
