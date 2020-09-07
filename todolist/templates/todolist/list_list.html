@@ -1,6 +1,4 @@
 {% extends 'todolist/base.html' %}
-{% load static %}
-
 {% block content %}
     <h5>Benötigst du <a class="btn btn-link" href="{% url 'hilfe' %}" target="blank"><strong>Hilfe</strong></a>?</h5>
     {% for post in posts %}

@@ -1,6 +1,4 @@
 {% extends 'todolist/base.html' %}
-{% load static %}
-
 {% block content %}
     <div class="post">
         {% if post.published_date %}
@@ -27,8 +25,9 @@
             <p><h4>Schon erledigt <strong>{{ post.to }}</strong>?</h4></p>
             {% if not todo.approved_todo %}
                 <a class="btn btn-danger" href="{% url 'todo_remove' pk=todo.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-                <a class="btn btn-success" href="{% url 'todo_approve' pk=todo.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
             {% endif %}
+                <a class="btn btn-success" href="{% url 'todo_approve' pk=todo.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+
         </div>
     {% empty %}
         <p>Noch keine ToDos vorhanden.</p>

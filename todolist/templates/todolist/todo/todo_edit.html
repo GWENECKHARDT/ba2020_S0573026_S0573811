@@ -1,6 +1,4 @@
 {% extends 'todolist/base.html' %}
-{% load static %}
-
 {% block content %}
     <h2>Neues ToDo erstellen</h2>
     <form method="POST" class="todo-form">{% csrf_token %}
