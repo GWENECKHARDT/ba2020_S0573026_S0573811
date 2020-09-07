@@ -40,7 +40,7 @@ python manage.py runserver
 
 ## Deployte-Version 
 
-http://betrieblicheanwendungen.pythonanywhere.com
+http://projektbetriebliche.pythonanywhere.com/
 
 Benutzername: Test
 
