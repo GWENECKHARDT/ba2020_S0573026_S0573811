@@ -9,7 +9,7 @@ Mit Hilfe dieser Anweisungen erhalten Sie eine Kopie des Projekts, die auf Ihrem
 
 ### Anfang
 
-Bevor es losgehen kann, muss folgender Befehl im Zielverzeichnis des Projektes im Terminal ausgeführt werden. 
+Bevor es losgehen kann, muss folgender Befehl im Zielverzeichnis des Projektes im Terminal ausgeführt werden:
 ```
 git clone https://github.com/GWENECKHARDT/ba2020_S0573026_S0573811.git
 ```
@@ -17,6 +17,7 @@ git clone https://github.com/GWENECKHARDT/ba2020_S0573026_S0573811.git
 ### Installieren mit PyCharm
 
 Als erstes muss der Ordner mit dem Projektnamen in PyCharm geöffnet werden. 
+
 Danach müssen diese Schritte ausgeführt werden:
 
 Installieren der requirements.txt Datei:
@@ -42,6 +43,7 @@ python manage.py runserver
 http://betrieblicheanwendungen.pythonanywhere.com
 
 Benutzername: Test
+
 Passwort: Test
 
 ## Ersteller
