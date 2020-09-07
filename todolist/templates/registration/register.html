@@ -5,12 +5,16 @@
     <form method="POST">
         {% csrf_token %}
         {{form}}
-         <button style="background-color:lawngreen; color:black" class="btn btn-outline-info" type="submit">Registrieren</button>
+<!--         <button style="background-color:lawngreen; color:black" class="btn btn-outline-info" type="submit">Registrieren</button>-->
+        <p><a class="btn btn-custom" type="submit">Registrieren</a></p>
     </form>
 
-    Wenn du schon einen Account hast, geht es hier zur <a href='login' target="blank"><strong>Anmeldung</strong></a> .
+    Wenn du schon einen Account hast, geht es hier zur <a class="btn btn-link" href='login' target="blank"><strong>Anmeldung</strong></a> .
 
-<h4><a href="{% url 'anbs' %}"><button type="button">AGB's</button></a></h4>
+<p>Mit deiner Registrierung stimmst du unseren allgemeinen Nutzungsbedingungen
+<!--<h4><a href="{% url 'anbs' %}"><button type="button">ANB's</button></a></h4> -->
+    <a class="btn btn-link" href="{% url 'anbs' %}" target="blank"><strong>ANB's</strong></a>
+zu. </p>
 
 
 

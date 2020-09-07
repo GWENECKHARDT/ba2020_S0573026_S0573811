@@ -10,12 +10,13 @@
     background-color: darkviolet;
     margin-top: 0;
     padding: 10px 10px 10px 20px;
+    font-family: 'Poppins', bold;
 }
 
 .page-header h1 a
 {
     color: white;
-    font-family: 'Poppins', fed;
+    font-family: 'Poppins', bold;
     font-size: 30pt
 }
 
@@ -29,6 +30,22 @@
 {
     color: white;
     float: right;
+    font-family: 'Poppins';
+}
+
+.btn-custom
+{
+    color: white;
+    background-color: darkviolet;
+    font-family: 'Poppins', bold;
+}
+
+.btn-link
+{
+    color: darkviolet;
+    padding: 0px 0px;
+    font-family: 'Poppins', bold;
+
 }
 
 h2

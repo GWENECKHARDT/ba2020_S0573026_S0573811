@@ -6,8 +6,8 @@
         {% if post.published_date %}
         {% endif %}
         {% if user.is_authenticated %}
-            <h4><a class="btn btn-default" href="{% url 'list_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-            <a class="btn btn-default" href="{% url 'list_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a></h4>
+        <h4><a class="btn btn-warning" href="{% url 'list_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-danger" href="{% url 'list_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a></h4>
         {% endif %}
         <h2>{{ post.title }}</h2>
         <h4><p>Von: {{ post.author}}</p></h4>
@@ -18,17 +18,17 @@
     </div>
 <!--Ab hier für die ToDos:-->
     <hr>
-    <a class="btn btn-default" href="{% url 'add_todo_to_list' pk=post.pk %}">Add ToDo</a>
+    <a class="btn btn-custom" href="{% url 'add_todo_to_list' pk=post.pk %}">Add ToDo</a>
     {% for todo in post.todos.all %}
         <div class="todo">
             <div class="date">
-            {{ todo.created_date }}
+                <p><h5>{{ todo.created_date }}<h5/></p>
+            <p><h4>{{ todo.text|linebreaks }}</h4></p>
+            <p><h4>Schon erledigt <strong>{{ post.to }}</strong>?</h4></p>
             {% if not comment.approved_comment %}
-                <a class="btn btn-default" href="{% url 'todo_remove' pk=todo.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-                <a class="btn btn-default" href="{% url 'todo_approve' pk=todo.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+                <a class="btn btn-danger" href="{% url 'todo_remove' pk=todo.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+                <a class="btn btn-success" href="{% url 'todo_approve' pk=todo.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
             {% endif %}
-            <strong>{{ todo.author }}</strong>
-            <p>{{ todo.text|linebreaks }}</p>
         </div>
     {% empty %}
         <p>Noch keine ToDos vorhanden.</p>
