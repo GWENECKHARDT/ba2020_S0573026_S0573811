@@ -127,6 +127,7 @@ def add_todo_to_list(request, pk):
         if form.is_valid():
             todo = form.save(commit=False)
             todo.post = post
+            todo.author = post.author
             todo.save()
             return redirect('list_detail', pk=post.pk)
     else:
