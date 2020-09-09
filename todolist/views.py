@@ -8,19 +8,17 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
-
 @login_required
 def list_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'todolist/list_list.html', {'posts': posts})
-
 
 @login_required
 def list_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'todolist/list_detail.html', {'post': post})
 
-
+@login_required
 def list_remove(request, pk):
     post = get_object_or_404(Post, pk=pk)
     post.delete()
@@ -96,7 +94,7 @@ def todo_new(request):
 
 
 def todo_edit(request, pk):
-    todo = get_object_or_404(ToDo, pk=pk)
+    todo = get_object_or_404(Post, pk=pk)
     if request.method == "TODO":
         form = ToDoForm(request.TODO, instance=todo)
         if form.is_valid():
@@ -104,7 +102,7 @@ def todo_edit(request, pk):
             todo.author = request.user
             todo.published_date = timezone.now()
             todo.save()
-            return redirect('todo_details', pk=todo.pk)
+            return redirect('list_detail', pk=todo.post.pk)
     else:
         form = ToDoForm(instance=todo)
     return render(request, 'todolist/todo/todo_edit.html', {'form': form})
@@ -149,7 +147,7 @@ def todo_remove(request, pk):
     todo.delete()
     return redirect('list_detail', pk=todo.post.pk)
 
-
+@login_required
 def todo_closed(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'todolist/todo/todo_closed.html', {'post': post})
@@ -158,15 +156,18 @@ def todo_closed(request, pk):
 def anbs(request):
     return render(request, 'anbs/anb.html', {})
 
-
+@login_required
 def hilfe(request):
     return render(request, 'hilfe/hilfe.html', {})
 
+@login_required
 def hilfe_list(request):
     return render(request, 'hilfe/hilfe_list.html', {})
 
+@login_required
 def hilfe_todo(request):
     return render(request, 'hilfe/hilfe_todo.html', {})
 
+@login_required
 def hilfe_top(request):
     return render(request, 'hilfe/hilfe_top.html', {})

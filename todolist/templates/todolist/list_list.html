@@ -7,7 +7,6 @@
             <p>{{ post.text|linebreaksbr }}</p>
             <h4><a href="{% url 'list_detail' pk=post.pk %}">To-Do's: {{ post.todos.count }}</a></h4>
             <h4><a href="{% url 'todo_closed' pk=post.pk %}">Erledigte To-Do's: {{ post.approved_todos.count }}</a></h4>
-<!--            <h4><a href="{% url 'todo_details' %}"><button type="button">To-Do's</button></a></h4>-->
             <h5><p>Ersteller: {{ post.author}}</p></h5>
             <h5><p>Für: {{ post.to}}</p></h5>
             <div class="date">

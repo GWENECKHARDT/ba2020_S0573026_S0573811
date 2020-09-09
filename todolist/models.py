@@ -4,8 +4,8 @@ from django.utils import timezone
 
 
 class Post(models.Model):
-    # objects = None
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # author = "Me"
     to = models.CharField(max_length=20, default='')
     title = models.CharField(max_length=200)
     text = models.TextField()
@@ -28,9 +28,7 @@ class ToDo(models.Model):
     text = models.TextField()
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
-    # post = models.ForeignKey('Post', on_delete=models.CASCADE) <-- hier lag der Fehler
     post = models.ForeignKey('todolist.Post', on_delete=models.CASCADE, related_name='todos')
-    # objects = None
     approved_todo = models.BooleanField(default=False)
 
     def publish(self):

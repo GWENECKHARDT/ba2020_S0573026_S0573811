@@ -14,7 +14,6 @@
                 <h5>Veröffentlicht: {{ post.published_date }}</h5>
         </div>
     </div>
-<!--Ab hier für die ToDos:-->
     <hr>
     <a class="btn btn-custom" href="{% url 'add_todo_to_list' pk=post.pk %}">To-Do hinzufügen</a>
     {% for todo in post.todos.all %}

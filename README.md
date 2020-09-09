@@ -1,7 +1,16 @@
 # Django To-Do Liste 
 
-Django To-Do Liste ist eine To-Do Listen Web-Anwendung, in der die Grundfunktionen wie z.B. Registrierung/Anmeldung, Erstellen/Löschen/Bearbeiten einer 
-To-Do Liste und eines oder mehrerer dazugehöriger To-Do's erstellt wurden.
+Django To-Do Liste ist eine To-Do Listen Web-Anwendung, in der die Grundfunktionen von
+To-Do Listen und eines oder mehrerer dazugehöriger To-Do's erstellt wurden.
+Jedem Nutzer ist es möglich ein Benutzerprofil mit einem Passwort zu erstellen. 
+Außerdem sind die allgemeinen Nutzungsbedingungen einsehbar. 
+Man kann To-Do Listen erstellen, diesen einen Titel und einen Zuständigen zuordnen. 
+Wenn man eine Liste auswählt kann man sie bearbeiten und löschen.
+Außerdem kann man in jeder To-Do Liste weitere To-Do's mit einem Text erstellen. 
+Diese kann man im Menüpunkt "To-Do's" bearbeiten, löschen und erledigen. 
+Sobald man eines erledigt hat, ist es auch in "Erledigte To-Do's" zu finden, wo man es löschen kann.
+Sollte der Nutzer nicht zurechtkommen, gibt es den Menüpnkt "Hilfe". 
+Dort findet er eine Beschreibung der Anweudung, sowie Erklärungen zu einzelnen Optionen.
 
 ## Herunterladen
 
