@@ -161,3 +161,12 @@ def anbs(request):
 
 def hilfe(request):
     return render(request, 'hilfe/hilfe.html', {})
+
+def hilfe_list(request):
+    return render(request, 'hilfe/hilfe_list.html', {})
+
+def hilfe_todo(request):
+    return render(request, 'hilfe/hilfe_todo.html', {})
+
+def hilfe_top(request):
+    return render(request, 'hilfe/hilfe_top.html', {})
