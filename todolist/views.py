@@ -1,4 +1,3 @@
-from django.contrib import messages
 from django.contrib.auth import login
 from django.utils import timezone
 from .models import Post, ToDo
@@ -8,15 +7,18 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 
+
 @login_required
 def list_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'todolist/list_list.html', {'posts': posts})
 
+
 @login_required
 def list_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'todolist/list_detail.html', {'post': post})
+
 
 @login_required
 def list_remove(request, pk):
@@ -69,14 +71,14 @@ def register(request):
             for msg in form.error_messages:
                 print(form.error_messages[msg])
 
-            return render(request = request,
-                          template_name = "registration/register.html",
-                          context={"form":form})
+            return render(request=request,
+                          template_name="registration/register.html",
+                          context={"form": form})
 
     form = UserCreationForm
-    return render(request = request,
-                  template_name = "registration/register.html",
-                  context={"form":form})
+    return render(request=request,
+                  template_name="registration/register.html",
+                  context={"form": form})
 
 
 def todo_new(request):
@@ -108,18 +110,6 @@ def todo_edit(request, pk):
     return render(request, 'todolist/todo/todo_edit.html', {'form': form})
 
 
-@login_required
-def todo_details(request):
-    form = ToDoForm()
-    return render(request, 'todolist/todo/todo_details.html', {'form':form})
-
-
-@login_required
-def todo_list(request):
-    todos = ToDo.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
-    return render(request, 'todolist/todo/todo_list.html', {'todos': todos})
-
-
 def add_todo_to_list(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
@@ -148,6 +138,7 @@ def todo_remove(request, pk):
     todo.delete()
     return redirect('list_detail', pk=todo.post.pk)
 
+
 @login_required
 def todo_closed(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -157,17 +148,21 @@ def todo_closed(request, pk):
 def anbs(request):
     return render(request, 'anbs/anb.html', {})
 
+
 @login_required
 def hilfe(request):
     return render(request, 'hilfe/hilfe.html', {})
+
 
 @login_required
 def hilfe_list(request):
     return render(request, 'hilfe/hilfe_list.html', {})
 
+
 @login_required
 def hilfe_todo(request):
     return render(request, 'hilfe/hilfe_todo.html', {})
+
 
 @login_required
 def hilfe_top(request):

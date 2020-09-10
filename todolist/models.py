@@ -5,7 +5,6 @@ from django.utils import timezone
 
 class Post(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    # author = "Me"
     to = models.CharField(max_length=20, default='')
     title = models.CharField(max_length=200)
     text = models.TextField()
@@ -21,6 +20,7 @@ class Post(models.Model):
 
     def approved_todos(self):
         return self.todos.filter(approved_todo=True)
+
 
 class ToDo(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
