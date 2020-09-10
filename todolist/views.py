@@ -94,9 +94,9 @@ def todo_new(request):
 
 
 def todo_edit(request, pk):
-    todo = get_object_or_404(Post, pk=pk)
-    if request.method == "TODO":
-        form = ToDoForm(request.TODO, instance=todo)
+    todo = get_object_or_404(ToDo, pk=pk)
+    if request.method == "POST":
+        form = ToDoForm(request.POST, instance=todo)
         if form.is_valid():
             todo = form.save(commit=False)
             todo.author = request.user
