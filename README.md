@@ -50,7 +50,7 @@ python manage.py runserver
 
 ## Deployte-Version 
 
-http://projektbetriebliche.pythonanywhere.com/
+http://projekttodoliste.pythonanywhere.com/
 
 Benutzername: Test
 
